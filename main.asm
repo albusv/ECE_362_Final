@@ -97,9 +97,9 @@ men_disp:		ldaa			menu_flg
 			beq			men_disp
 			jsr			hexKeypad
 			cmpa			#$ff
-			bset			new_key_flg, #1
 			beq			disp_cont
 			staa			temp_key
+			bset			new_key_flg, #1
 disp_cont:	ldd			LCD_disp					;load d with char pointer
 			jsr			display_string
 			bra			men_disp

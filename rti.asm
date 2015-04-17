@@ -106,7 +106,7 @@ rtiSvc:
 ;for testing			ldaa		engine_start_flg  		;this comes from the push button
 ;for testing			beq		menu_disp			;can't do anything without engine start
 			ldaa		cmbt_flg
-			bne		no_cmbat
+			beq		no_cmbat
 			jmp		cmbt_mode			 ; if not combat, then menu/ vtoi/ flight	
 no_cmbat:		ldaa		vtoi_flg
 			bne		vtoi_mode
@@ -145,6 +145,7 @@ rst_motor_v:	ldx		#motor_cmd
 
 flt_mode:		ldaa		eng_pwr_flg
 			beq		menu_disp
+			
 			ldaa		throttle		;load up the throttle
 			cmpa		#24
 			bhi		dcflt	; branch if higher than 24%
